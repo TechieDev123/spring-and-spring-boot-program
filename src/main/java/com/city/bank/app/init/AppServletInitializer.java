@@ -1,4 +1,4 @@
-package com.city.bank.app;
+package com.city.bank.app.init;
 
 import jakarta.servlet.ServletContainerInitializer;
 import jakarta.servlet.ServletContext;
@@ -13,7 +13,7 @@ public class AppServletInitializer implements ServletContainerInitializer {
     @Override
     public void onStartup(Set<Class<?>> set, ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext webApplicationContext=new AnnotationConfigWebApplicationContext();
-        webApplicationContext.register(AccountResource.class);
+        webApplicationContext.scan("com.city.bank.app.*");
 
         DispatcherServlet dispatcherServlet=new DispatcherServlet(webApplicationContext);
 
